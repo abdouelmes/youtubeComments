@@ -1,14 +1,25 @@
-const CommentModel = (sequelize, Sequelize) => {
-    const {INTEGER, STRING, FLOAT, BOOLEAN, DATE} = Sequelize
-    const Comment = sequelize.define('User', {
-        CommentId: { type: STRING, primaryKey: true },
-        VideoId: { type: STRING, allowNull: false },
-        UserId: {type: STRING, allowNull: true},
-        CommentText: {type: STRING, primaryKey: false},
-        NumberOfLikes: { type: INTEGER, allowNull: true },
-        NumberOfDislikes: {type: INTEGER, allowNull: true}
-    })
-    return Comment
-}
+const Sequelize = require('sequelize');
+const db = require('../config/database');
 
-module.exports = CommentModel
+const Gig = db.define('gig', {
+  title: {
+    type: Sequelize.STRING
+  },
+  technologies: {
+    type: Sequelize.STRING
+  },
+  description: {
+    type: Sequelize.STRING
+  },
+  budget: {
+    type: Sequelize.STRING
+  },
+  contact_email: {
+    type: Sequelize.STRING
+  }
+});
+
+Gig.sync().then(() => {
+  console.log('table created');
+});
+module.exports = Gig;

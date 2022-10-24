@@ -1,13 +1,25 @@
-const UserModel = (sequelize, Sequelize) => {
-    const {INTEGER, STRING, FLOAT, BOOLEAN, DATE} = Sequelize
-    const User = sequelize.define('User', {
-        UserId: { type: STRING, primaryKey: true, allowNull: true },
-        UserEmail: { type: STRING, primaryKey: true, allowNull: false },
-        UserPassword: { type: STRING, allowNull: false },
-        NumberOfLikes: { type: INTEGER, allowNull: true },
-        NumberOfDislikes: {type: INTEGER, allowNull: true}
-    })
-    return User
-}
+const Sequelize = require('sequelize');
+const db = require('../config/database');
 
-module.exports = UserModel
+const Gig = db.define('gig', {
+  title: {
+    type: Sequelize.STRING
+  },
+  technologies: {
+    type: Sequelize.STRING
+  },
+  description: {
+    type: Sequelize.STRING
+  },
+  budget: {
+    type: Sequelize.STRING
+  },
+  contact_email: {
+    type: Sequelize.STRING
+  }
+});
+
+Gig.sync().then(() => {
+  console.log('table created');
+});
+module.exports = Gig;

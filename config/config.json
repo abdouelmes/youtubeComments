@@ -1,0 +1,10 @@
+{
+  "config":{
+    "host": "127.0.0.1",
+    "user": "root",
+    "port": "8080",
+    "password": "secret",
+    "database": "youtube_comment",
+    "dialect": "mysql"
+  }
+}
